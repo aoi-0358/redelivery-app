@@ -9,30 +9,56 @@ export default class App extends React.Component  {
     this.state = {
         answers: [],
         chats: [],
-        currentID: "init",
+        currentId: "init",
         dataset: defaultDataset,
         open: false
     }
   }
 
-  initAnswer = () => {
-    const initDataset = this.state.dataset[this.state.currentID];
-    const initAnswers = initDataset.answers;
+  displayNextQuestion = (nextQuestionId) => {
+   const chats = this.state.chats
+   chats.push({
+     text: this.state.dataset[nextQuestionId].question,
+     type: 'question'
+   })
+   this.setState({
+    answers: this.state.dataset[nextQuestionId].answers, 
+    chats: chats,
+    currentId: nextQuestionId
+   })
+  }
 
-    this.setState( {
-      answers: initAnswers
-    })
+  selectAnswer = (selectedAnswer, nextQuestionId) => {
+    switch(true){
+      case (nextQuestionId === 'init'):
+        this.displayNextQuestion(nextQuestionId)
+          break; 
+      default:
+        const chats = this.state.chats;
+        chats.push({ 
+          text: selectedAnswer,
+          type: 'answer'
+        })
+    
+        this.setState( {
+          chats: chats
+        })
+
+        this.displayNextQuestion(nextQuestionId)
+        break;
+    }
   }
 
   componentDidMount() {
-    this.initAnswer()
+      const initAnswer = ""
+      this.selectAnswer(initAnswer, this.state.currentId)
      }
    
      render () {
          return (
            <section className="c-sention">
              <div className="c-box">
-               <Chats />
+               <Chats chats={this.state.chats}/>
                <AnswersList answers={this.state.answers}/>
              </div>
            </section> 
