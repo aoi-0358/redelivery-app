@@ -9,10 +9,7 @@ const useStyles = makeStyles(  () => (
         color: "#FFB549",
         fontWeight: 600,
         marginBottom: "8px",
-        "&:hover": {
-            backgroundColor: "#0000FF",
-            color: "#fff"
-        }
+       
       }
     })
   ));
