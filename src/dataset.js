@@ -1,49 +1,52 @@
 const defaultDataset = {
   "init": {
       answers: [
-          {content: "仕事を依頼したい", nextId: "job_offer"},
-          {content: "エンジニアのキャリアについて相談したい", nextId: "consultant"},
-          {content: "学習コミュニティについて知りたい", nextId: "community"},
-          {content: "お付き合いしたい", nextId: "dating"},
+          {content: "今日中ならいつでも", nextId: "job_offer"},
+          {content: "８時〜１２時", nextId: "job_offer"},
+          {content: "１２時〜１４時", nextId: "job_offer"},
+          {content: "１４時〜１６時", nextId: "job_offer"},
+          {content: "１６時〜１８時", nextId: "job_offer"},
+          {content: "１８時〜２０時", nextId: "job_offer"},
+          {content: "２０時〜２１時", nextId: "job_offer"},
       ],
-      question: "こんにちは！🐯トラハックへのご用件はなんでしょうか？",
+      question: "配達希望時間を指で触って選んでください！🧸",
   },
   "job_offer": {
       answers: [
-          {content: "Webサイトを制作してほしい", nextId: "website"},
-          {content: "Webアプリを開発してほしい", nextId: "webapp"},
-          {content: "自動化ツールを作ってほしい", nextId: "automation_tool"},
-          {content: "その他", nextId: "other_jobs"}
+          {content: "チャイムならして大きな声で声掛けして", nextId: "delivery method"},
+          {content: "すぐとるので玄関前に置いといてほしい", nextId: "delivery method"},
+          {content: "玄関あけて置いといてほしい", nextId: "delivery method"},
+          {content: "到着したら電話してほしい📞", nextId: "tel"},
+          {content: "すぐ動けないので待ってほしい", nextId: "delivery method"},
+          {content: "特にありません", nextId: "delivery method"}
       ],
-      question: "どのようなお仕事でしょうか？",
+      question: "承りました！希望の配達方法はありますか？",
   },
-  "website": {
+  "delivery method": {
       answers: [
-          {content: "問い合わせる", nextId: "contact"},
+          {content: "再配達を依頼する", nextId: "contact"},
+         ],
+      question: "承りました！下の『再配達を依頼する』を押して完了です",
+  },
+  "tel": {
+      answers: [
+          {content: "入力する", nextId: "phone number"},
+      ],
+      question: "電話番号を入力してください📞",
+  },
+  //"automation_tool": {
+  //  answers: [
+  //        {content: "問い合わせる", nextId: "contact"},
+  //         {content: "最初の質問に戻る", nextId: "init"}
+  //     ],
+  //    question: "自動化ツール開発についてですね。コチラからお問い合わせできます。",
+  //  },
+  "phone number": {
+      answers: [
+          {content: "再配達を依頼する", nextId: "contact"},
           {content: "最初の質問に戻る", nextId: "init"}
       ],
-      question: "Webサイト細作についてですね。コチラからお問い合わせできます。",
-  },
-  "webapp": {
-      answers: [
-          {content: "問い合わせる", nextId: "contact"},
-          {content: "最初の質問に戻る", nextId: "init"}
-      ],
-      question: "Webアプリ開発についてですね。コチラからお問い合わせできます。",
-  },
-  "automation_tool": {
-      answers: [
-          {content: "問い合わせる", nextId: "contact"},
-          {content: "最初の質問に戻る", nextId: "init"}
-      ],
-      question: "自動化ツール開発についてですね。コチラからお問い合わせできます。",
-  },
-  "other_jobs": {
-      answers: [
-          {content: "問い合わせる", nextId: "contact"},
-          {content: "最初の質問に戻る", nextId: "init"}
-      ],
-      question: "その他についてですね。コチラからお問い合わせできます。",
+      question: "承りました！下の『再配達を依頼する』を押して完了です",
   },
   "consultant": {
       answers: [
