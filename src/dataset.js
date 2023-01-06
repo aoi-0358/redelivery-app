@@ -2,45 +2,52 @@ const defaultDataset = {
   "init": {
       answers: [
           {content: "今日中ならいつでも", nextId: "job_offer"},
-          {content: "８時〜１２時", nextId: "job_offer"},
-          {content: "１２時〜１４時", nextId: "job_offer"},
-          {content: "１４時〜１６時", nextId: "job_offer"},
-          {content: "１６時〜１８時", nextId: "job_offer"},
-          {content: "１８時〜２０時", nextId: "job_offer"},
-          {content: "２０時〜２１時", nextId: "job_offer"},
+          {content: "明日", nextId: "job_offer"},
+          {content: "明後日", nextId: "job_offer"},
+          {content: "４日後", nextId: "job_offer"},
+          {content: "５日後", nextId: "job_offer"},
+          {content: "６日後", nextId: "job_offer"},
+          {content: "７日後", nextId: "job_offer"},
       ],
-      question: "配達希望時間を指で触って選んでください！🧸",
+      question: "配達日を指で触って選んでください！🧸",
   },
   "job_offer": {
       answers: [
-          {content: "チャイムならして大きな声で声掛けして", nextId: "delivery method"},
-          {content: "すぐとるので玄関前に置いといてほしい", nextId: "delivery method"},
-          {content: "玄関あけて置いといてほしい", nextId: "delivery method"},
-          {content: "到着したら電話してほしい📞", nextId: "tel"},
-          {content: "すぐ動けないので待ってほしい", nextId: "delivery method"},
-          {content: "特にありません", nextId: "delivery method"}
+          {content: "指定なし", nextId: "delivery time"},
+          {content: "８時〜１２時", nextId: "delivery time"},
+          {content: "１２時〜１４時", nextId: "delivery time"},
+          {content: "１４時〜１６時", nextId: "delivery time"},
+          {content: "１６時〜１８時", nextId: "delivery time"},
+          {content: "１８時〜２０時", nextId: "delivery time"},
+          {content: "１９時〜２１時", nextId: "delivery time"},
+          {content: "２０時〜２１時", nextId: "delivery time"}
       ],
+      question: "承りました！希望時間はありますか？",
+  },
+  "delivery time": {
+      answers: [
+          {content: "特になし", nextId: "method"},
+          {content: "チャイムならして声掛けしてほしい", nextId: "method"},
+          {content: "すぐとるので玄関前に置いといてほしい", nextId: "method"},
+          {content: "玄関あけて置いといてほしい", nextId: "method"},
+          {content: "到着したら電話してほしい📞", nextId: "tell"},
+          {content: "すぐ動けないので待ってほしい", nextId: "method"},
+         ],
       question: "承りました！希望の配達方法はありますか？",
   },
-  "delivery method": {
-      answers: [
-          {content: "再配達を依頼する", nextId: "contact"},
-         ],
-      question: "承りました！下の『再配達を依頼する』を押して完了です",
-  },
-  "tel": {
+  "tell": {
       answers: [
           {content: "入力する", nextId: "phone number"},
       ],
       question: "電話番号を入力してください📞",
   },
-  //"automation_tool": {
-  //  answers: [
-  //        {content: "問い合わせる", nextId: "contact"},
-  //         {content: "最初の質問に戻る", nextId: "init"}
-  //     ],
-  //    question: "自動化ツール開発についてですね。コチラからお問い合わせできます。",
-  //  },
+  "method": {
+    answers: [
+           {content: "再配達を依頼する", nextId: "contact"},
+           {content: "最初の質問に戻る", nextId: "init"}
+       ],
+      question: "下の『再配達を依頼する』を押して完了です",
+    },
   "phone number": {
       answers: [
           {content: "再配達を依頼する", nextId: "contact"},
@@ -48,6 +55,9 @@ const defaultDataset = {
       ],
       question: "承りました！下の『再配達を依頼する』を押して完了です",
   },
+
+
+  
   "consultant": {
       answers: [
           {content: "YouTubeで動画を見る", nextId: "https://www.youtube.com/channel/UC-bOAxx-YOsviSmqh8COR0w"},
