@@ -1,7 +1,7 @@
 const defaultDataset = {
   "init": {
       answers: [
-          {content: "今日中ならいつでも", nextId: "job_offer"},
+          {content: "今日中ならいつでも", nextId: "delivery time"},
           {content: "明日", nextId: "job_offer"},
           {content: "明後日", nextId: "job_offer"},
           {content: "４日後", nextId: "job_offer"},
@@ -30,7 +30,7 @@ const defaultDataset = {
           {content: "チャイムならして声掛けしてほしい", nextId: "method"},
           {content: "すぐとるので玄関前に置いといてほしい", nextId: "method"},
           {content: "玄関あけて置いといてほしい", nextId: "method"},
-          {content: "到着したら電話してほしい📞", nextId: "tell"},
+          {content: "到着したら電話してほしい📞", nextId: "method"},
           {content: "すぐ動けないので待ってほしい", nextId: "method"},
          ],
       question: "承りました！希望の配達方法はありますか？",
@@ -43,10 +43,10 @@ const defaultDataset = {
   },
   "method": {
     answers: [
-           {content: "再配達を依頼する", nextId: "contact"},
+           {content: "内容を確認する", nextId: "contact"},
            {content: "最初の質問に戻る", nextId: "init"}
        ],
-      question: "下の『再配達を依頼する』を押して完了です",
+      question: "下の『内容を確認する』を押して完了です",
     },
   "phone number": {
       answers: [
