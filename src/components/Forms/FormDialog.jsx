@@ -6,12 +6,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextInput from './TextInput'
 
-export default class FormDialog extends React.Component {
-  constructor(props) {
-    super(props);
+function FormDialog () {
 
-} 
-  render() {
+
     return (
       <Dialog
       open={this.props.open}
@@ -34,5 +31,7 @@ export default class FormDialog extends React.Component {
     </Dialog>
 
     )
-  }
+  
 }
+
+export default FormDialog
