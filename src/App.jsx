@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import defaultDataset from "./dataset";
 import "./assets/styles/style.css";
 import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+function App ()  {
+ 
+   const initState = {
       answers: [],
       chats: [],
       // 選択した解答を配列に追加
@@ -16,22 +15,28 @@ export default class App extends React.Component {
       dataset: defaultDataset,
       open: false,
     };
-    this.selectAnswer = this.selectAnswer.bind(this);
-    this.handleClickOpen = this.handleClickOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-  }
+
+    const [answers, chats, selectedAnswers, currentId, dataset, open ] = useState(initState)
+
+ 
+
+
+    // selectAnswer = selectAnswer.bind(this);
+    // handleClickOpen = handleClickOpen.bind(this);
+    // handleClose = handleClose.bind(this);
+  
 
   // 次の質問をチャットエリアに表示する関数
   displayNextQuestion = (nextQuestionId) => {
-    const chats = this.state.chats;
+    const chats = state.chats;
 
     chats.push({
-      text: this.state.dataset[nextQuestionId].question,
+      text: state.dataset[nextQuestionId].question,
       type: "question",
     });
 
-    this.setState({
-      answers: this.state.dataset[nextQuestionId].answers,
+   setState({
+      answers: state.dataset[nextQuestionId].answers,
       chats: chats,
       currentId: nextQuestionId,
     });
@@ -40,18 +45,18 @@ export default class App extends React.Component {
   selectAnswer = (selectedAnswer, nextQuestionId) => {
     switch (true) {
       case nextQuestionId === "init":
-        setTimeout(() => this.displayNextQuestion(nextQuestionId), 500);
+        setTimeout(() => displayNextQuestion(nextQuestionId), 500);
         break;
 
       case nextQuestionId === "contact":
-        this.handleClickOpen();
+        handleClickOpen();
         break;
 
       default:
-        const chats = this.state.chats;
+        const chats = state.chats;
         // answersに一旦これまでの回答を格納
-        const answers = this.state.selectedAnswers;
-        this.setState({
+        const answers = state.selectedAnswers;
+        setState({
           // answersに今回選択された解答を追加
           selectedAnswers: [...answers, selectedAnswer],
         });
@@ -59,59 +64,49 @@ export default class App extends React.Component {
           text: selectedAnswer,
           type: "answer",
         });
-        this.setState({
+        setState({
           chats: chats,
         });
-        setTimeout(() => this.displayNextQuestion(nextQuestionId), 1000);
+        setTimeout(() => displayNextQuestion(nextQuestionId), 1000);
         break;
     }
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
+ const handleClickOpen = () => {
+    setState({ open: true });
   };
-  handleClose = () => {
-    this.setState({ open: false });
+ const handleClose = () => {
+    setState({ open: false });
   };
 
-  componentDidMount() {
-    const initAnswer = "";
-    this.selectAnswer(initAnswer, this.state.currentId);
-  }
+  // componentDidMount() {
+  //   const initAnswer = "";
+  //   selectAnswer(initAnswer, state.currentId);
+  // }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    const scrollArea = document.getElementById("scroll-area");
-    if (scrollArea) {
-      scrollArea.scrollTop = scrollArea.scrollHeight;
-    }
-  }
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   const scrollArea = document.getElementById("scroll-area");
+  //   if (scrollArea) {
+  //     scrollArea.scrollTop = scrollArea.scrollHeight;
+  //   }
+  // }
 
-  render() {
     return (
       <section className="c-sention">
         <div className="c-box">
-          <Chats chats={this.state.chats} />
+          <Chats chats={state.chats} />
           <AnswersList
-            answers={this.state.answers}
-            select={this.selectAnswer}
+            answers={state.answers}
+            select={selectAnswer}
           />
           <FormDialog
-            open={this.state.open}
-            handleClose={this.handleClose}
-            selectedAnswers={this.state.selectedAnswers}
+            open={state.open}
+            handleClose={handleClose}
+            selectedAnswers={state.selectedAnswers}
           />
         </div>
       </section>
     );
-  }
 }
 
-//  const now = new Date();
-//  const hh = now.getHours();
-
-// document.getElementById('hh').style.display = "none";
-// if (now >= '12:00') {
-//    console.log('a')
-//  } else {
-//   console.log('b');
-// }
+export default App
