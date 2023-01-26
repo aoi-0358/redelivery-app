@@ -5,20 +5,21 @@ import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
 
 function App ()  {
- 
-   const initState = {
-      answers: [],
-      chats: [],
-      // 選択した解答を配列に追加
-      selectedAnswers: [],
-      currentId: "init",
-      dataset: defaultDataset,
-      open: false,
-    };
-
-    const [answers, chats, selectedAnswers, currentId, dataset, open ] = useState(initState)
-
- 
+  const [answers, chats, selectedAnswers, setState] = useState(); 
+  const [selectAnswer] = useState();
+  const [displayNextQuestion] = useState();
+  const [dataset] = useState(defaultDataset);
+  const [open] = useState(false);
+  
+  //  const initState = {
+  //     answers: [],
+  //     chats: [],
+  //     // 選択した解答を配列に追加
+  //     selectedAnswers: [],
+  //     currentId: "init",
+  //     dataset: defaultDataset,
+  //     open: false,
+  //   };
 
 
     // selectAnswer = selectAnswer.bind(this);
@@ -28,15 +29,15 @@ function App ()  {
 
   // 次の質問をチャットエリアに表示する関数
   displayNextQuestion = (nextQuestionId) => {
-    const chats = state.chats;
+    const chats = chats;
 
     chats.push({
-      text: state.dataset[nextQuestionId].question,
+      text: dataset[nextQuestionId].question,
       type: "question",
     });
 
    setState({
-      answers: state.dataset[nextQuestionId].answers,
+      answers: dataset[nextQuestionId].answers,
       chats: chats,
       currentId: nextQuestionId,
     });
@@ -53,9 +54,9 @@ function App ()  {
         break;
 
       default:
-        const chats = state.chats;
+        const chats = chats;
         // answersに一旦これまでの回答を格納
-        const answers = state.selectedAnswers;
+        const answers = selectedAnswers;
         setState({
           // answersに今回選択された解答を追加
           selectedAnswers: [...answers, selectedAnswer],
@@ -81,7 +82,7 @@ function App ()  {
 
   // componentDidMount() {
   //   const initAnswer = "";
-  //   selectAnswer(initAnswer, state.currentId);
+  //   selectAnswer(initAnswer, currentId);
   // }
 
   // componentDidUpdate(prevProps, prevState, snapshot) {
@@ -94,15 +95,15 @@ function App ()  {
     return (
       <section className="c-sention">
         <div className="c-box">
-          <Chats chats={state.chats} />
+          <Chats chats={chats} />
           <AnswersList
-            answers={state.answers}
+            answers={answers}
             select={selectAnswer}
           />
           <FormDialog
-            open={state.open}
+            open={open}
             handleClose={handleClose}
-            selectedAnswers={state.selectedAnswers}
+            selectedAnswers={selectedAnswers}
           />
         </div>
       </section>
