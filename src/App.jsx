@@ -28,8 +28,8 @@ function App ()  {
   
 
   // 次の質問をチャットエリアに表示する関数
-  displayNextQuestion = (nextQuestionId) => {
-    const chats = chats;
+  useState = (nextQuestionId) => {
+    const chats = useState;
 
     chats.push({
       text: dataset[nextQuestionId].question,
@@ -43,7 +43,7 @@ function App ()  {
     });
   };
   // 回答が選択された時に呼ばれる関数
-  selectAnswer = (selectedAnswer, nextQuestionId) => {
+  useState = (selectedAnswer, nextQuestionId) => {
     switch (true) {
       case nextQuestionId === "init":
         setTimeout(() => displayNextQuestion(nextQuestionId), 500);
@@ -54,7 +54,7 @@ function App ()  {
         break;
 
       default:
-        const chats = chats;
+        const chats = useState;
         // answersに一旦これまでの回答を格納
         const answers = selectedAnswers;
         setState({
