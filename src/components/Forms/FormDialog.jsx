@@ -6,22 +6,21 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextInput from "./TextInput";
 
-
-function FormDialog () {
-
-
-    return (
-      <Dialog
+function FormDialog() {
+  return (
+    <Dialog
       open={this.props.open}
       onClose={this.props.handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">
-        この内容でお間違いなければ<br/>下の『依頼する』を選択してください
+        この内容でお間違いなければ
+        <br />
+        下の『依頼する』を選択してください
       </DialogTitle>
       <DialogContent>
-          <TextInput />
+        <TextInput />
       </DialogContent>
       <DialogActions>
         <Button onClick={this.props.handleClose}>依頼する</Button>
@@ -30,11 +29,7 @@ function FormDialog () {
         </Button>
       </DialogActions>
     </Dialog>
-
-    )
-  
+  );
 }
 
-export default FormDialog
-
-
+export default FormDialog;

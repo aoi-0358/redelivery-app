@@ -4,13 +4,13 @@ import "./assets/styles/style.css";
 import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
 
-function App ()  {
-  const [answers, chats, selectedAnswers, setState] = useState(); 
+function App() {
+  const [answers, chats, selectedAnswers, setState] = useState();
   const [selectAnswer] = useState();
   const [displayNextQuestion] = useState();
   const [dataset] = useState(defaultDataset);
   const [open] = useState(false);
-  
+
   //  const initState = {
   //     answers: [],
   //     chats: [],
@@ -21,11 +21,9 @@ function App ()  {
   //     open: false,
   //   };
 
-
-    // selectAnswer = selectAnswer.bind(this);
-    // handleClickOpen = handleClickOpen.bind(this);
-    // handleClose = handleClose.bind(this);
-  
+  // selectAnswer = selectAnswer.bind(this);
+  // handleClickOpen = handleClickOpen.bind(this);
+  // handleClose = handleClose.bind(this);
 
   // 次の質問をチャットエリアに表示する関数
   useState = (nextQuestionId) => {
@@ -36,7 +34,7 @@ function App ()  {
       type: "question",
     });
 
-   setState({
+    setState({
       answers: dataset[nextQuestionId].answers,
       chats: chats,
       currentId: nextQuestionId,
@@ -73,10 +71,10 @@ function App ()  {
     }
   };
 
- const handleClickOpen = () => {
+  const handleClickOpen = () => {
     setState({ open: true });
   };
- const handleClose = () => {
+  const handleClose = () => {
     setState({ open: false });
   };
 
@@ -92,22 +90,19 @@ function App ()  {
   //   }
   // }
 
-    return (
-      <section className="c-sention">
-        <div className="c-box">
-          <Chats chats={chats} />
-          <AnswersList
-            answers={answers}
-            select={selectAnswer}
-          />
-          <FormDialog
-            open={open}
-            handleClose={handleClose}
-            selectedAnswers={selectedAnswers}
-          />
-        </div>
-      </section>
-    );
+  return (
+    <section className="c-sention">
+      <div className="c-box">
+        <Chats chats={chats} />
+        <AnswersList answers={answers} select={selectAnswer} />
+        <FormDialog
+          open={open}
+          handleClose={handleClose}
+          selectedAnswers={selectedAnswers}
+        />
+      </div>
+    </section>
+  );
 }
 
-export default App
+export default App;
