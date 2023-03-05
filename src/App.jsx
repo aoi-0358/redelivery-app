@@ -42,7 +42,7 @@ function App() {
     });
   };
   // 回答が選択された時に呼ばれる関数
-  selectedAnswers = (selectedAnswer, nextQuestionId) => {
+const selectedAnswer = (selectedAnswer, nextQuestionId) => {
     switch (true) {
       case nextQuestionId === "init":
         setTimeout(() => displayNextQuestion(nextQuestionId), 500);
