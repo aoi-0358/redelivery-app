@@ -5,43 +5,44 @@ import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
 
 function App() {
-  const [answers, chats, selectedAnswers, setState] = useState();
-  const [selectAnswer] = useState();
-  const [displayNextQuestion] = useState();
-  const [dataset] = useState(defaultDataset);
-  const [open] = useState(false);
+  const [answers, setAnswers] = useState([]);
+  const [chats, setChats] = useState([]);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [currentId, setCurrentId] = useState();
+  const [dataset, setDataset] = useState(defaultDataset);
+  const [isOpen, setIsOpen] = useState();
 
-  //  const initState = {
-  //     answers: [],
-  //     chats: [],
-  //     // 選択した解答を配列に追加
-  //     selectedAnswers: [],
-  //     currentId: "init",
-  //     dataset: defaultDataset,
-  //     open: false,
-  //   };
+  const initState = {
+    answers: [],
+    chats: [],
+    // 選択した解答を配列に追加
+    selectedAnswers: [],
+    currentId: "init",
+    dataset: defaultDataset,
+    open: false,
+  };
 
-  // selectAnswer = selectAnswer.bind(this);
+  // setSlectedAnswer = setSelectedAnswer.bind(this);
   // handleClickOpen = handleClickOpen.bind(this);
   // handleClose = handleClose.bind(this);
 
   // 次の質問をチャットエリアに表示する関数
-  useState = (nextQuestionId) => {
-    const chats = useState;
+  displayNextQuestion = (nextQuestionId) => {
+    const chats = chats;
 
     chats.push({
       text: dataset[nextQuestionId].question,
       type: "question",
     });
 
-    setState({
+    chats({
       answers: dataset[nextQuestionId].answers,
       chats: chats,
       currentId: nextQuestionId,
     });
   };
   // 回答が選択された時に呼ばれる関数
-  useState = (selectedAnswer, nextQuestionId) => {
+  selectedAnswers = (selectedAnswer, nextQuestionId) => {
     switch (true) {
       case nextQuestionId === "init":
         setTimeout(() => displayNextQuestion(nextQuestionId), 500);
@@ -52,10 +53,10 @@ function App() {
         break;
 
       default:
-        const chats = useState;
+        const chats = chats;
         // answersに一旦これまでの回答を格納
         const answers = selectedAnswers;
-        setState({
+        selectedAnswers({
           // answersに今回選択された解答を追加
           selectedAnswers: [...answers, selectedAnswer],
         });
@@ -63,7 +64,7 @@ function App() {
           text: selectedAnswer,
           type: "answer",
         });
-        setState({
+        chats({
           chats: chats,
         });
         setTimeout(() => displayNextQuestion(nextQuestionId), 1000);
@@ -72,10 +73,10 @@ function App() {
   };
 
   const handleClickOpen = () => {
-    setState({ open: true });
+    dataset({ open: true });
   };
   const handleClose = () => {
-    setState({ open: false });
+    dataset({ open: false });
   };
 
   // componentDidMount() {
@@ -94,9 +95,9 @@ function App() {
     <section className="c-sention">
       <div className="c-box">
         <Chats chats={chats} />
-        <AnswersList answers={answers} select={selectAnswer} />
+        <AnswersList answers={answers} select={setSelectedAnswers} />
         <FormDialog
-          open={open}
+          open={isOpen}
           handleClose={handleClose}
           selectedAnswers={selectedAnswers}
         />
