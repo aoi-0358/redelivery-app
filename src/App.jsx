@@ -42,14 +42,14 @@ function App() {
     });
   };
   // 回答が選択された時に呼ばれる関数
-const selectedAnswer = (selectedAnswer, nextQuestionId) => {
+  const selectedAnswer = (selectedAnswer, nextQuestionId) => {
     switch (true) {
       case nextQuestionId === "init":
         setTimeout(() => displayNextQuestion(nextQuestionId), 500);
         break;
 
       case nextQuestionId === "contact":
-        handleClickOpen();
+        // handleClickOpen();
         break;
 
       default:
@@ -72,13 +72,6 @@ const selectedAnswer = (selectedAnswer, nextQuestionId) => {
     }
   };
 
-  const handleClickOpen = () => {
-    dataset({ open: true });
-  };
-  const handleClose = () => {
-    dataset({ open: false });
-  };
-
   // componentDidMount() {
   //   const initAnswer = "";
   //   selectAnswer(initAnswer, currentId);
@@ -96,11 +89,7 @@ const selectedAnswer = (selectedAnswer, nextQuestionId) => {
       <div className="c-box">
         <Chats chats={chats} />
         <AnswersList answers={answers} select={setSelectedAnswers} />
-        <FormDialog
-          open={isOpen}
-          handleClose={handleClose}
-          selectedAnswers={selectedAnswers}
-        />
+        <FormDialog selectedAnswers={selectedAnswers} />
       </div>
     </section>
   );

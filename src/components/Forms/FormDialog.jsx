@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -7,32 +7,39 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextInput from "./TextInput";
 
 function FormDialog() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
-      <DialogTitle id="alert-dialog-title">
-        この内容でお間違いなければ
-        <br />
-        下の『依頼する』を選択してください
-      </DialogTitle>
-      <DialogContent>
-        <TextInput />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>依頼する</Button>
-        <Button onClick={handleClose}>戻る</Button>
-      </DialogActions>
-    </Dialog>
+    <>
+      <button onClick={handleClickOpen}>モーダルを開くボタン</button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          この内容でお間違いなければ
+          <br />
+          下の『依頼する』を選択してください
+        </DialogTitle>
+        <DialogContent>
+          <TextInput />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>依頼する</Button>
+          <Button onClick={handleClose}>戻る</Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 }
 
