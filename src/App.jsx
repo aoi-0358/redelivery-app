@@ -27,7 +27,7 @@ function App() {
   // handleClose = handleClose.bind(this);
 
   // 次の質問をチャットエリアに表示する関数
-  displayNextQuestion = (nextQuestionId) => {
+  const displayNextQuestion = (nextQuestionId) => {
     const chats = chats;
 
     chats.push({
