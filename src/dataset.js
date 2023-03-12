@@ -1,7 +1,7 @@
-const defaultDataset = {
+const DEFAULT_DATASET = {
   init: {
     answers: [
-      { content: "今日中ならいつでも", nextId: "delivery time" },
+      { content: "今日中ならいつでも", nextId: "delivery_time" },
       { content: "明日", nextId: "job_offer" },
       { content: "明後日", nextId: "job_offer" },
       { content: "４日後", nextId: "job_offer" },
@@ -13,18 +13,18 @@ const defaultDataset = {
   },
   job_offer: {
     answers: [
-      { content: "指定なし", nextId: "delivery time" },
-      { content: "８時〜１２時", nextId: "delivery time" },
-      { content: "１２時〜１４時", nextId: "delivery time" },
-      { content: "１４時〜１６時", nextId: "delivery time" },
-      { content: "１６時〜１８時", nextId: "delivery time" },
-      { content: "１８時〜２０時", nextId: "delivery time" },
-      { content: "１９時〜２１時", nextId: "delivery time" },
-      { content: "２０時〜２１時", nextId: "delivery time" },
+      { content: "指定なし", nextId: "delivery_time" },
+      { content: "８時〜１２時", nextId: "delivery_time" },
+      { content: "１２時〜１４時", nextId: "delivery_time" },
+      { content: "１４時〜１６時", nextId: "delivery_time" },
+      { content: "１６時〜１８時", nextId: "delivery_time" },
+      { content: "１８時〜２０時", nextId: "delivery_time" },
+      { content: "１９時〜２１時", nextId: "delivery_time" },
+      { content: "２０時〜２１時", nextId: "delivery_time" },
     ],
     question: "承りました！希望時間はありますか？",
   },
-  "delivery time": {
+  delivery_time: {
     answers: [
       { content: "特になし", nextId: "method" },
       { content: "チャイムならして声掛けしてほしい", nextId: "method" },
@@ -36,7 +36,7 @@ const defaultDataset = {
     question: "承りました！希望の配達方法はありますか？",
   },
   tell: {
-    answers: [{ content: "入力する", nextId: "phone number" }],
+    answers: [{ content: "入力する", nextId: "phone_number" }],
     question: "電話番号を入力してください📞",
   },
   method: {
@@ -46,7 +46,7 @@ const defaultDataset = {
     ],
     question: "下の『内容を確認する』を押して完了です",
   },
-  "phone number": {
+  phone_number: {
     answers: [
       { content: "再配達を依頼する", nextId: "contact" },
       { content: "最初の質問に戻る", nextId: "init" },
@@ -102,4 +102,4 @@ const defaultDataset = {
   },
 };
 
-export default defaultDataset;
+export default DEFAULT_DATASET;
