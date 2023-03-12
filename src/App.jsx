@@ -70,8 +70,6 @@ const selectedAnswer = (selectedAnswer, nextQuestionId) => {
   //   selectAnswer(initAnswer, currentId);
   // }
   const handleChange = (content, nextId) => {
-    console.log("content", content);
-    console.log("nextId", nextId);
     // id が delivery_time の時はdelivery_time 配下のanswersをsetAnswersする
     if (nextId === "delivery_time") {
       setAnswers(DEFAULT_DATASET.delivery_time.answers);
