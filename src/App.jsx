@@ -1,30 +1,16 @@
 import React, { useState } from "react";
-import defaultDataset from "./dataset";
+import DEFAULT_DATASET from "./dataset";
 import "./assets/styles/style.css";
 import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
 
 function App() {
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState(DEFAULT_DATASET.init.answers);
   const [chats, setChats] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [currentId, setCurrentId] = useState();
-  const [dataset, setDataset] = useState(defaultDataset);
-  const [isOpen, setIsOpen] = useState();
-
-  const initState = {
-    answers: [],
-    chats: [],
-    // 選択した解答を配列に追加
-    selectedAnswers: [],
-    currentId: "init",
-    dataset: defaultDataset,
-    open: false,
-  };
-
-  // setSlectedAnswer = setSelectedAnswer.bind(this);
-  // handleClickOpen = handleClickOpen.bind(this);
-  // handleClose = handleClose.bind(this);
+  const [currentId, setCurrentId] = useState("init");
+  const [dataset, setDataset] = useState(DEFAULT_DATASET);
+  const [isOpen, setIsOpen] = useState(false);
 
   // 次の質問をチャットエリアに表示する関数
   const displayNextQuestion = (nextQuestionId) => {
@@ -83,13 +69,17 @@ const selectedAnswer = (selectedAnswer, nextQuestionId) => {
   //   const initAnswer = "";
   //   selectAnswer(initAnswer, currentId);
   // }
+  const handleChange = (content, nextId) => {
+    // id が delivery_time の時はdelivery_time 配下のanswersをsetAnswersする
+    if (nextId === "delivery_time") {
+      setAnswers(DEFAULT_DATASET.delivery_time.answers);
+    }
 
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   const scrollArea = document.getElementById("scroll-area");
-  //   if (scrollArea) {
-  //     scrollArea.scrollTop = scrollArea.scrollHeight;
-  //   }
-  // }
+    // id が job_offer の時は job_offer配下のanswersをsetAnswersする
+    if (nextId === "job_offer") {
+      setAnswers(DEFAULT_DATASET.job_offer.answers);
+    }
+  };
 
   return (
     <section className="c-sention">
@@ -101,6 +91,9 @@ const selectedAnswer = (selectedAnswer, nextQuestionId) => {
           handleClose={handleClose}
           selectedAnswers={selectedAnswers}
         />
+
+        <AnswersList answers={answers} select={handleChange} />
+        <FormDialog selectedAnswers={selectedAnswers} />
       </div>
     </section>
   );
