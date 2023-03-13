@@ -3,7 +3,6 @@ import DEFAULT_DATASET from "./dataset";
 import "./assets/styles/style.css";
 import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
-
 function App() {
   const [answers, setAnswers] = useState(DEFAULT_DATASET.init.answers);
   const [chats, setChats] = useState([]);
@@ -28,7 +27,7 @@ function App() {
     });
   };
   // 回答が選択された時に呼ばれる関数
-const selectedAnswer = (selectedAnswer, nextQuestionId) => {
+  const selectedAnswer = (selectedAnswer, nextQuestionId) => {
     switch (true) {
       case nextQuestionId === "init":
         setTimeout(() => displayNextQuestion(nextQuestionId), 500);
@@ -79,13 +78,21 @@ const selectedAnswer = (selectedAnswer, nextQuestionId) => {
     if (nextId === "job_offer") {
       setAnswers(DEFAULT_DATASET.job_offer.answers);
     }
+
+    // id が method の時はmethot配下のanswersをsetAnswersする
+    if (nextId === "method") {
+      setAnswers(DEFAULT_DATASET.method.answers);
+    }
+    // idがinitのときはinit配下のanswersをsetAnswersする。
+    if (nextId === "init") {
+      setAnswers(DEFAULT_DATASET.init.answers);
+    }
   };
 
   return (
     <section className="c-sention">
       <div className="c-box">
         <Chats chats={chats} />
-        <AnswersList answers={answers} select={setSelectedAnswers} />
         <FormDialog
           open={isOpen}
           handleClose={handleClose}
