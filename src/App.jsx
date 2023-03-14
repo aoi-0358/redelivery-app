@@ -5,7 +5,7 @@ import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
 function App() {
   const [answers, setAnswers] = useState(DEFAULT_DATASET.init.answers);
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState([DEFAULT_DATASET.init.question]);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [currentId, setCurrentId] = useState("init");
   const [dataset, setDataset] = useState(DEFAULT_DATASET);
@@ -88,7 +88,6 @@ function App() {
       setAnswers(DEFAULT_DATASET.init.answers);
     }
   };
-
   return (
     <section className="c-sention">
       <div className="c-box">
