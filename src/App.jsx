@@ -11,6 +11,7 @@ function App() {
   const [dataset, setDataset] = useState(DEFAULT_DATASET);
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log(isOpen);
   // 次の質問をチャットエリアに表示する関数
   const displayNextQuestion = (nextQuestionId) => {
     const chats = chats;
@@ -58,10 +59,11 @@ function App() {
   };
 
   const handleClickOpen = () => {
-    dataset({ open: true });
+    setIsOpen(true);
   };
+
   const handleClose = () => {
-    dataset({ open: false });
+    setIsOpen(false);
   };
 
   // 今回やりたいこと
@@ -129,6 +131,10 @@ function App() {
           ]),
         500
       );
+    }
+
+    if (nextId === "contact") {
+      handleClickOpen();
     }
   };
   return (
