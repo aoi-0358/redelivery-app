@@ -6,19 +6,13 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextInput from "./TextInput";
 
-import { useState } from "react";
+function FormDialog(props) {
 
-function FormDialog() {
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return (
     <Dialog
-      open={open}
-      onClose={handleClose}
+      open={props.open}
+      onClose={props.handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
@@ -31,8 +25,8 @@ function FormDialog() {
         <TextInput />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>依頼する</Button>
-        <Button onClick={handleClose}>戻る</Button>
+        <Button onClick={props.handleClose}>依頼する</Button>
+        <Button onClick={props.handleClose}>戻る</Button>
       </DialogActions>
     </Dialog>
   );
