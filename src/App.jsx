@@ -83,9 +83,23 @@ function App() {
 
   // 答えを選択したタイミングで発火
   const handleChange = (content, nextId) => {
+    // idがinitのときはinit配下のanswersをsetAnswersする。
+    if (nextId === "init") {
+      setAnswers(DEFAULT_DATASET.init.answers);
+    }
+
     // id が delivery_time の時はdelivery_time 配下のanswersをsetAnswersする
     if (nextId === "delivery_time") {
       setAnswers(DEFAULT_DATASET.delivery_time.answers);
+      setChats((prevChat) => [...prevChat, { text: content }]);
+      setTimeout(
+        () =>
+          setChats((prevChat) => [
+            ...prevChat,
+            DEFAULT_DATASET.delivery_time.question,
+          ]),
+        500
+      );
     }
 
     // id が job_offer の時は job_offer配下のanswersをsetAnswersする
@@ -106,10 +120,15 @@ function App() {
     // id が method の時はmethot配下のanswersをsetAnswersする
     if (nextId === "method") {
       setAnswers(DEFAULT_DATASET.method.answers);
-    }
-    // idがinitのときはinit配下のanswersをsetAnswersする。
-    if (nextId === "init") {
-      setAnswers(DEFAULT_DATASET.init.answers);
+      setChats((prevChat) => [...prevChat, { text: content }]);
+      setTimeout(
+        () =>
+          setChats((prevChat) => [
+            ...prevChat,
+            DEFAULT_DATASET.method.question,
+          ]),
+        500
+      );
     }
   };
   return (
