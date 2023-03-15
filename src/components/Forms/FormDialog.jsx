@@ -4,11 +4,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import TextInput from "./TextInput";
 
 function FormDialog(props) {
-
-
   return (
     <Dialog
       open={props.open}
@@ -21,9 +18,7 @@ function FormDialog(props) {
         <br />
         下の『依頼する』を選択してください
       </DialogTitle>
-      <DialogContent>
-        <TextInput />
-      </DialogContent>
+      <DialogContent>{props.selectedAnswers}</DialogContent>
       <DialogActions>
         <Button onClick={props.handleClose}>依頼する</Button>
         <Button onClick={props.handleClose}>戻る</Button>
