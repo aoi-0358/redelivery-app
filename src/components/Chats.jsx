@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) =>
 
 const Chats = (props) => {
   const classes = useStyles();
-  console.log(props);
   return (
     <List className={classes.chats} id={"scroll-area"}>
       {props.chats.map((chat, index) => {
