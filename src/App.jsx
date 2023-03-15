@@ -5,7 +5,7 @@ import { AnswersList, Chats } from "./components/index";
 import FormDialog from "./components/Forms/FormDialog";
 function App() {
   const [answers, setAnswers] = useState(DEFAULT_DATASET.init.answers);
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState([DEFAULT_DATASET.init.question]);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [currentId, setCurrentId] = useState("init");
   const [dataset, setDataset] = useState(DEFAULT_DATASET);
@@ -64,31 +64,73 @@ function App() {
     dataset({ open: false });
   };
 
-  // componentDidMount() {
-  //   const initAnswer = "";
-  //   selectAnswer(initAnswer, currentId);
-  // }
+  // 今回やりたいこと
+  // 1.answersで選択した値をchatで表示したい
+  /**
+   * 今
+   * chats = [{ text: "配達日を指で触って選んでください！🧸", type: "question" }]
+   *
+   * 2行目
+   * chats = [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }]
+   * [...chats, { text: content } ] === [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }]
+   *
+   * 3行目
+   * chats = [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }]
+   * [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }, { text: "承りました！希望時間はありますか？", type: "question" }]
+   */
+
+  // 2.選択した解答の次の質問をchatで表示したい
+
+  // 答えを選択したタイミングで発火
   const handleChange = (content, nextId) => {
+    // idがinitのときはinit配下のanswersをsetAnswersする。
+    if (nextId === "init") {
+      setAnswers(DEFAULT_DATASET.init.answers);
+    }
+
     // id が delivery_time の時はdelivery_time 配下のanswersをsetAnswersする
     if (nextId === "delivery_time") {
       setAnswers(DEFAULT_DATASET.delivery_time.answers);
+      setChats((prevChat) => [...prevChat, { text: content }]);
+      setTimeout(
+        () =>
+          setChats((prevChat) => [
+            ...prevChat,
+            DEFAULT_DATASET.delivery_time.question,
+          ]),
+        500
+      );
     }
 
     // id が job_offer の時は job_offer配下のanswersをsetAnswersする
     if (nextId === "job_offer") {
       setAnswers(DEFAULT_DATASET.job_offer.answers);
+      setChats((prevChat) => [...prevChat, { text: content }]);
+      setTimeout(
+        () =>
+          // あおいが実装したところ
+          setChats((prevChat) => [
+            ...prevChat,
+            DEFAULT_DATASET.job_offer.question,
+          ]),
+        500
+      );
     }
 
     // id が method の時はmethot配下のanswersをsetAnswersする
     if (nextId === "method") {
       setAnswers(DEFAULT_DATASET.method.answers);
-    }
-    // idがinitのときはinit配下のanswersをsetAnswersする。
-    if (nextId === "init") {
-      setAnswers(DEFAULT_DATASET.init.answers);
+      setChats((prevChat) => [...prevChat, { text: content }]);
+      setTimeout(
+        () =>
+          setChats((prevChat) => [
+            ...prevChat,
+            DEFAULT_DATASET.method.question,
+          ]),
+        500
+      );
     }
   };
-
   return (
     <section className="c-sention">
       <div className="c-box">

@@ -8,9 +8,9 @@ import NoProfile from "../assets/img/no-profile.png";
 import Torahack from "../assets/img/torahack.png";
 
 const Chat = (props) => {
+  console.log(props);
   const isQuestion = props.type === "question";
   const classes = isQuestion ? "p-chat__row" : "p-chat__reverse";
-
   return (
     <ListItem className={classes}>
       <ListItemAvatar>
