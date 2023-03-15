@@ -9,7 +9,10 @@ const DEFAULT_DATASET = {
       { content: "６日後", nextId: "job_offer" },
       { content: "７日後", nextId: "job_offer" },
     ],
-    question: "配達日を指で触って選んでください！🧸",
+    question: {
+      text: "配達日を指で触って選んでください！🧸",
+      type: "question",
+    },
   },
   job_offer: {
     answers: [
@@ -22,7 +25,7 @@ const DEFAULT_DATASET = {
       { content: "１９時〜２１時", nextId: "delivery_time" },
       { content: "２０時〜２１時", nextId: "delivery_time" },
     ],
-    question: "承りました！希望時間はありますか？",
+    question: { text: "承りました！希望時間はありますか？", type: "question" },
   },
   delivery_time: {
     answers: [

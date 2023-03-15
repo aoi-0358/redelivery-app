@@ -64,10 +64,24 @@ function App() {
     dataset({ open: false });
   };
 
-  // componentDidMount() {
-  //   const initAnswer = "";
-  //   selectAnswer(initAnswer, currentId);
-  // }
+  // 今回やりたいこと
+  // 1.answersで選択した値をchatで表示したい
+  /**
+   * 今
+   * chats = [{ text: "配達日を指で触って選んでください！🧸", type: "question" }]
+   *
+   * 2行目
+   * chats = [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }]
+   * [...chats, { text: content } ] === [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }]
+   *
+   * 3行目
+   * chats = [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }]
+   * [{ text: "配達日を指で触って選んでください！🧸", type: "question" },{ text: "明日" }, { text: "承りました！希望時間はありますか？", type: "question" }]
+   */
+
+  // 2.選択した解答の次の質問をchatで表示したい
+
+  // 答えを選択したタイミングで発火
   const handleChange = (content, nextId) => {
     // id が delivery_time の時はdelivery_time 配下のanswersをsetAnswersする
     if (nextId === "delivery_time") {
@@ -77,6 +91,16 @@ function App() {
     // id が job_offer の時は job_offer配下のanswersをsetAnswersする
     if (nextId === "job_offer") {
       setAnswers(DEFAULT_DATASET.job_offer.answers);
+      setChats((prevChat) => [...prevChat, { text: content }]);
+      setTimeout(
+        () =>
+          // あおいが実装したところ
+          setChats((prevChat) => [
+            ...prevChat,
+            DEFAULT_DATASET.job_offer.question,
+          ]),
+        500
+      );
     }
 
     // id が method の時はmethot配下のanswersをsetAnswersする
