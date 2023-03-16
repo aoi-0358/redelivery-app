@@ -18,6 +18,7 @@ function FormDialog(props) {
         <br />
         下の『依頼する』を選択してください
       </DialogTitle>
+      {/* App.jsx７９[]で囲ってるから{props.selectedAnswers}をmapでまわすべき↓↓↓↓ */}
       <DialogContent>{props.selectedAnswers}</DialogContent>
       <DialogActions>
         <Button onClick={props.handleClose}>依頼する</Button>
