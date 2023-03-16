@@ -65,3 +65,8 @@
   letter-spacing: 0.125rem;
   line-height: 1.7;
 }
+
+.selected-modal {
+  padding: 5px 0;
+  text-align: center;
+}
