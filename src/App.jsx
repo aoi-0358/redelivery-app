@@ -30,6 +30,7 @@ function App() {
 
     // idがinitのときはinit配下のanswersをsetAnswersする。
     if (nextId === "init") {
+      window.location.reload("init");
       setAnswers(DEFAULT_DATASET.init.answers);
       setSelectedAnswers((prevContent) => [...prevContent, content]);
     }
