@@ -6,12 +6,12 @@ import { AnswersList, Chats, FormDialog} from "./components/index";
 
 
 function App() {
-  const [answers, setAnswers] = useState(DEFAULT_DATASET.init.answers);
-  const [chats, setChats] = useState([DEFAULT_DATASET.init.question]);
+  const [answers, setAnswers] = useState<string>(DEFAULT_DATASET.init.answers);
+  const [chats, setChats] = useState<string[]>([DEFAULT_DATASET.init.question]);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [currentId, setCurrentId] = useState("init");
-  const [dataset, setDataset] = useState(DEFAULT_DATASET);
-  const [isOpen, setIsOpen] = useState(false);
+  const [dataset, setDataset] = useState<string>(DEFAULT_DATASET);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClickOpen = () => {
     setIsOpen(true);
@@ -39,7 +39,7 @@ function App() {
     // id が delivery_time の時はdelivery_time 配下のanswersをsetAnswersする
     if (nextId === "delivery_time") {
       setAnswers(DEFAULT_DATASET.delivery_time.answers);
-      setChats((prevChat) => [...prevChat, { text: content }]);
+      setChats((prevChat) => [...prevChat, { text: content }]as string[]);
       setSelectedAnswers((prevContent) => [...prevContent, content]);
       setTimeout(
         () =>
@@ -54,7 +54,7 @@ function App() {
     // id が job_offer の時は job_offer配下のanswersをsetAnswersする
     if (nextId === "job_offer") {
       setAnswers(DEFAULT_DATASET.job_offer.answers);
-      setChats((prevChat) => [...prevChat, { text: content }]);
+      setChats((prevChat) => [...prevChat, { text: content }]as string[]);
       setSelectedAnswers((prevContent) => [...prevContent, content]);
       setTimeout(
         () =>
@@ -70,7 +70,7 @@ function App() {
     // id が method の時はmethot配下のanswersをsetAnswersする
     if (nextId === "method") {
       setAnswers(DEFAULT_DATASET.method.answers);
-      setChats((prevChat) => [...prevChat, { text: content }]);
+      setChats((prevChat) => [...prevChat, { text: content }]as string[]);
       setSelectedAnswers((prevContent) => [...prevContent, content]);
       setTimeout(
         () =>
