@@ -2,8 +2,7 @@ import { Type } from "typescript";
 import React, { useState } from "react";
 import DEFAULT_DATASET from "./dataset";
 import "./assets/styles/style.css";
-import { AnswersList, Chats } from "./components/index";
-import FormDialog from "./components/Forms/FormDialog";
+import { AnswersList, Chats, FormDialog} from "./components/index";
 
 
 function App() {
