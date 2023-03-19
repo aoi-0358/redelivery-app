@@ -1,3 +1,18 @@
+type Answer = {
+  content: string;
+  nextId: string;
+};
+
+export type AnswerListType = Answer[];
+
+type Question = {
+  text: string;
+  content: string;
+  type?: string;
+};
+
+export type ChatsType = (Question | { text: string })[];
+
 const DEFAULT_DATASET = {
   init: {
     answers: [
@@ -14,7 +29,7 @@ const DEFAULT_DATASET = {
       type: "question",
     },
   },
-  
+
   job_offer: {
     answers: [
       { content: "指定なし", nextId: "delivery_time" },
