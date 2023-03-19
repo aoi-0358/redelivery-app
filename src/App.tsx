@@ -39,7 +39,7 @@ function App() {
     // id が delivery_time の時はdelivery_time 配下のanswersをsetAnswersする
     if (nextId === "delivery_time") {
       setAnswers(DEFAULT_DATASET.delivery_time.answers);
-      setChats((prevChat) => [...prevChat, { text: content }]as string[]);
+      setChats((prevChat) => [...prevChat, content]);
       setSelectedAnswers((prevContent) => [...prevContent, content]);
       setTimeout(
         () =>
@@ -54,7 +54,7 @@ function App() {
     // id が job_offer の時は job_offer配下のanswersをsetAnswersする
     if (nextId === "job_offer") {
       setAnswers(DEFAULT_DATASET.job_offer.answers);
-      setChats((prevChat) => [...prevChat, { text: content }]as string[]);
+      setChats((prevChat) => [...prevChat, content]);
       setSelectedAnswers((prevContent) => [...prevContent, content]);
       setTimeout(
         () =>
@@ -70,7 +70,7 @@ function App() {
     // id が method の時はmethot配下のanswersをsetAnswersする
     if (nextId === "method") {
       setAnswers(DEFAULT_DATASET.method.answers);
-      setChats((prevChat) => [...prevChat, { text: content }]as string[]);
+      setChats((prevChat) => [...prevChat, content]);
       setSelectedAnswers((prevContent) => [...prevContent, content]);
       setTimeout(
         () =>
