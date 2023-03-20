@@ -2,6 +2,7 @@ import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import { Chat } from "./index";
+import { ChatsType } from "../dataset";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -13,11 +14,11 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const Chats = (props) => {
+const Chats = (chats: ChatsType) => {
   const classes = useStyles();
   return (
     <List className={classes.chats} id={"scroll-area"}>
-      {props.chats.map((chat, index) => {
+      {chats.map((chat, index) => {
         return (
           <Chat text={chat.text} type={chat.type} key={index.toString()} />
         );
