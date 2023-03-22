@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { AnswerListType, AnswerProps } from "../dataset";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -13,7 +14,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const Answer = (props) => {
+const Answer = (props: AnswerProps) => {
   const classes = useStyles();
   return (
     <Button

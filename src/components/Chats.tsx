@@ -2,7 +2,7 @@ import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import { ChatsType } from "../dataset";
-import  Chat  from "./components/index";
+import { Chat } from "/Users/okamuraao/Desktop/redelivery-app/src/components/index";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
