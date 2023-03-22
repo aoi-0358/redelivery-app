@@ -5,7 +5,7 @@ import { ChatsType } from "./dataset";
 import DEFAULT_DATASET from "./dataset";
 import AnswersList from "./components/AnswersList";
 import FormDialog from "./components/Forms/FormDialog";
-import Chats  from "./components/index";
+import { Chats } from "/Users/okamuraao/Desktop/redelivery-app/src/components";
 
 function App() {
   const [answers, setAnswers] = useState<AnswerListType>(

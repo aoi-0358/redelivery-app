@@ -27,3 +27,6 @@ export const Chat = (props: Question) =>  {
     </ListItem>
   );
 };
+
+export default Chat; 
+
