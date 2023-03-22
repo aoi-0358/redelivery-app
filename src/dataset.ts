@@ -1,17 +1,21 @@
-type Answer = {
+type AnswerType = {
   content: string;
   nextId: string;
 };
 
-export type AnswerListType = Answer[];
+type VandIType = {
+  value: string;
+  index: string;
+};
 
-type Question = {
+export type AnswerListType = AnswerType[];
+
+export type Question = {
   text: string;
-  content: string;
   type?: string;
 };
 
-export type ChatsType = (Question | { text: string })[];
+export type ChatsType = Question[];
 
 const DEFAULT_DATASET = {
   init: {

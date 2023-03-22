@@ -1,8 +1,8 @@
 import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-import { Chat } from "./index";
 import { ChatsType } from "../dataset";
+import  Chat  from "./components/index";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -14,7 +14,12 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const Chats = (chats: ChatsType) => {
+// chats = [{  text: string;  type?: string}, {  text: string;  type?: string}...]
+
+
+// props => chats: [{  text: string;  type?: string}, {  text: string;  type?: string}...]
+const Chats = (props: { chats: ChatsType }) => {
+  const { chats } = props;
   const classes = useStyles();
   return (
     <List className={classes.chats} id={"scroll-area"}>

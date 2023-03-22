@@ -1,27 +1,29 @@
 import React from "react";
+
 import ListItem from "@material-ui/core/ListItem";
-//import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-//import Typography from '@material-ui/core/Typography';
-import NoProfile from "../assets/img/no-profile.png";
-import Torahack from "../assets/img/torahack.png";
 
-const Chat = (props) => {
+// import NoProfile from "../assets/img/no-profile.png";
+// import Torahack from "../assets/img/torahack.png";
+
+import { Question } from "../dataset";
+
+export const Chat = (props: Question) =>  {
   const isQuestion = props.type === "question";
   const classes = isQuestion ? "p-chat__row" : "p-chat__reverse";
   return (
     <ListItem className={classes}>
       <ListItemAvatar>
         {isQuestion ? (
-          <Avatar alt="icon" src={Torahack} />
+          // <Avatar alt="icon" src={Torahack} />
+          <div>Torahack</div>
         ) : (
-          <Avatar alt="icon" src={NoProfile} />
+          // <Avatar alt="icon" src={NoProfile} />
+          <div>NoProfile</div>
         )}
       </ListItemAvatar>
       <div className="p-chat__bubble">{props.text}</div>
     </ListItem>
   );
 };
-
-export default Chat;
