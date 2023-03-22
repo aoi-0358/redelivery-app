@@ -14,6 +14,6 @@ if (rootElement !== null) {
   );
 }
 
-reportWebVitals((onPerfEntry: PerformanceObserverEntryList) => {
+reportWebVitals((onPerfEntry) => {
   console.log(onPerfEntry);
 });

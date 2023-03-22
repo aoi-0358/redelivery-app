@@ -1,6 +1,6 @@
 import React from "react";
-import { AnswerListType, AnswerProps, AnswerType } from "../dataset";
-import { Answer } from "/Users/okamuraao/Desktop/redelivery-app/src/components/index";
+import { AnswerListType, AnswerType } from "../dataset";
+import { Answer } from "./";
 
 const AnswersList = (props: {
   answers: AnswerListType;

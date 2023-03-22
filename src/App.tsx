@@ -5,9 +5,9 @@ import { ChatsType } from "./dataset";
 import DEFAULT_DATASET from "./dataset";
 import AnswersList from "./components/AnswersList";
 import FormDialog from "./components/Forms/FormDialog";
-import { Chats } from "/Users/okamuraao/Desktop/redelivery-app/src/components";
+import { Chats } from "./components";
 
-function App() {
+export const App = () => {
   const [answers, setAnswers] = useState<AnswerListType>(
     DEFAULT_DATASET.init.answers
   );
@@ -87,11 +87,8 @@ function App() {
           handleClose={handleClose}
           selectedAnswers={selectedAnswers}
         />
-
         <AnswersList answers={answers} select={handleChange} />
       </div>
     </section>
   );
-}
-
-export default App;
+};
