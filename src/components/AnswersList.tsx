@@ -1,19 +1,21 @@
-import React from "react";// @ts-ignore
-import  AnswerType  from "./dataset"; // @ts-ignore
-import  VandIType  from "./dataset"; // @ts-ignore
-import Answer from "./components/Answer"
+import React from "react";
+import { AnswerListType, AnswerType } from "../dataset";
+import { Answer } from "./";
 
-
-const AnswersList = (props: AnswerType) => {
+const AnswersList = (props: {
+  answers: AnswerListType;
+  select: (content: string, nextId: string) => void;
+}) => {
+  const { answers, select } = props;
   return (
     <div className="c-grid__answer">
-      {props.answers.map((value: VandIType, index: VandIType) => {
+      {answers.map((value: AnswerType, index: number) => {
         return (
           <Answer
             content={value.content}
             nextId={value.nextId}
             key={index.toString()}
-            select={props.select}
+            select={select}
           />
         );
       })}

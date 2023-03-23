@@ -2,7 +2,7 @@ import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import { ChatsType } from "../dataset";
-import  Chat  from "./components/index";
+import { Chat } from "./";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -14,10 +14,6 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-// chats = [{  text: string;  type?: string}, {  text: string;  type?: string}...]
-
-
-// props => chats: [{  text: string;  type?: string}, {  text: string;  type?: string}...]
 const Chats = (props: { chats: ChatsType }) => {
   const { chats } = props;
   const classes = useStyles();

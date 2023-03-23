@@ -1,11 +1,19 @@
-type AnswerType = {
+export interface AnswerProps {
+  content: string;
+  nextId: string;
+  select: (content: string, nextId: string) => void;
+}
+
+export type AnswerType = {
   content: string;
   nextId: string;
 };
 
-type VandIType = {
+export type VandIType = {
   value: string;
   index: string;
+  nextId: string;
+  content: string;
 };
 
 export type AnswerListType = AnswerType[];
