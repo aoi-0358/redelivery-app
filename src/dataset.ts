@@ -25,7 +25,7 @@ export type Question = {
 
 export type ChatsType = Question[];
 
-const DEFAULT_DATASET = {
+export const DEFAULT_DATASET = {
   init: {
     answers: [
       { content: "今日中ならいつでも", nextId: "delivery_time" },

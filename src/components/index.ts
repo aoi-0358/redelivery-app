@@ -2,7 +2,8 @@ export { default as AnswersList } from "./AnswersList";
 export { default as Answer } from "./Answer";
 export { default as Chat } from "./Chat";
 export { default as Chats } from "./Chats";
-export { default as FormDialog } from "./Forms/FormDialog";
+export { default as FormDialog } from "./Forms/FormDialog"
+
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import "./assets/styles/style.css";
-import { AnswerListType } from "./dataset";
-import { ChatsType } from "./dataset";
-import DEFAULT_DATASET from "./dataset";
+import React from "react";
+import { useState } from "react";
+import {
+  AnswerListType,
+  ChatsType,
+  DEFAULT_DATASET
+} from "./dataset";
 import AnswersList from "./components/AnswersList";
 import FormDialog from "./components/Forms/FormDialog";
-import { Chats } from "./components";
+import Chats from "./components/Chats";
 
 export const App = () => {
   const [answers, setAnswers] = useState<AnswerListType>(
